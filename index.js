@@ -7,7 +7,7 @@ const brokerProductNode = new ServiceBroker({
     transporter: "redis://localhost:6379"
 });
 
-// Create the product service
+// Create product service
 brokerProductNode.createService({
     name:  "products",
     actions: {
@@ -22,7 +22,7 @@ brokerProductNode.createService({
       }
 });
 
-// Create the broker for node-1 as API Gateway Service and define nodeID and set the communication bus
+// Create gateway service
 const brokerAPIGatewayNode = new ServiceBroker({
     nodeID: "api-gateway-node",
     transporter: "redis://localhost:6379"

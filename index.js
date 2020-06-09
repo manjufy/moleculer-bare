@@ -1,7 +1,7 @@
 const { ServiceBroker } = require('moleculer');
 const HTTPServer = require("moleculer-web");
 
-// Create the broker for node-2 as Product Service and define the NodeId and set the communciation bus
+// Create the broker for Product Service and define the NodeId and set the communciation bus
 const brokerProductNode = new ServiceBroker({
     nodeID: "product-node",
     transporter: "redis://localhost:6379"
@@ -22,7 +22,7 @@ brokerProductNode.createService({
       }
 });
 
-// Create gateway service
+// Create a broker for gateway service
 const brokerAPIGatewayNode = new ServiceBroker({
     nodeID: "api-gateway-node",
     transporter: "redis://localhost:6379"

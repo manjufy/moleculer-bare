@@ -37,7 +37,7 @@ brokerAPIGatewayNode.createService({
         routes: [
             {
                 aliases: {
-                    // When the "GET /products" request is made the "listProducts" action of "products" service is executed
+                    // When the "GET /products" request is made the "list" action of "products" service is executed
                     "GET /products": "products.list"
                 }
             }

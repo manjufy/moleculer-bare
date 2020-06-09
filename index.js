@@ -12,7 +12,7 @@ brokerProductNode.createService({
     name:  "products",
     actions: {
         // Define service action that returns the available products
-        listProducts(ctx) {
+        list(ctx) {
           return [
             { name: "Apples", price: 5 },
             { name: "Oranges", price: 3 },
@@ -38,7 +38,7 @@ brokerAPIGatewayNode.createService({
             {
                 aliases: {
                     // When the "GET /products" request is made the "listProducts" action of "products" service is executed
-                    "GET /products": "products.listProducts"
+                    "GET /products": "products.list"
                 }
             }
         ],

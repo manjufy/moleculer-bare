@@ -1,0 +1,21 @@
+{
+  "name": "moleculer-bare",
+  "version": "1.0.0",
+  "description": "Moleculer Bare App",
+  "main": "index.js",
+  "scripts": {
+    "dev": "moleculer-runner --repl --hot",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ioredis": "^4.17.3",
+    "moleculer": "^0.14.7",
+    "moleculer-web": "^0.9.1",
+    "nats": "^1.4.9"
+  },
+  "devDependencies": {
+    "moleculer-repl": "^0.6.4"
+  }
+}

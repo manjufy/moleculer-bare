@@ -13,4 +13,6 @@ Moleculer suggests to use default transporter, since we need to download and ins
 git clone git@github.com:manjufy/moleculer-bare.git
 cd > moleculer-bare
 cd > moleculer-bare > node index.js
+
+Go to http://localhost:4000/products
 ```

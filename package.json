@@ -13,7 +13,8 @@
     "ioredis": "^4.17.3",
     "moleculer": "^0.14.7",
     "moleculer-web": "^0.9.1",
-    "nats": "^1.4.9"
+    "nats": "^1.4.9",
+    "sqs-consumer": "^5.4.0"
   },
   "devDependencies": {
     "moleculer-repl": "^0.6.4"

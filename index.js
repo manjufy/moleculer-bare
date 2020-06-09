@@ -1,5 +1,7 @@
 const { ServiceBroker } = require('moleculer');
 const HTTPServer = require("moleculer-web");
+const { Consumer } = require('sqs-consumer');
+const AWS = require('aws-sdk');
 
 // Create the broker for Product Service and define the NodeId and set the communciation bus
 const brokerProductNode = new ServiceBroker({
@@ -45,8 +47,45 @@ brokerAPIGatewayNode.createService({
     }
 });
 
+// Create a broker for SQS
+const brokerSQSConsumerNode = new ServiceBroker({
+    nodeID: "sqs-consumer-node",
+    transporter: "redis://localhost:6379"
+});
+
+// Create the SQS Consumer service
+brokerSQSConsumerNode.createService({
+    name: 'sqs'
+})
+
 // Start both brokers
 Promise.all([
     brokerAPIGatewayNode.start(),
-    brokerProductNode.start()
+    brokerProductNode.start(),
+    brokerSQSConsumerNode.start().then(() => {
+        AWS.config.update({
+            region: '...',
+            accessKeyId: '...',
+            secretAccessKey: '...'
+          });
+
+        // sqs-consumer goes here
+        const app = Consumer.create({
+            queueUrl: 'https://sqs.ap-southeast-1.amazonaws.com/{accountId}/{queueName}',
+            handleMessage: async (message) => {
+              // do some work with `message`
+              console.log('Message', message)
+            }
+          });
+           
+          app.on('error', (err) => {
+            console.error(err.message);
+          });
+           
+          app.on('processing_error', (err) => {
+            console.error(err.message);
+          });
+           
+          app.start();
+    })
 ]);

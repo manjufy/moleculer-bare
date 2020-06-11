@@ -5,6 +5,7 @@ Repo implements barebone moleculer implementation that consists for
 - An API Gateway
 - A internal service
 - An SQS Consumer to consume messages from AWS SQS Queue
+- Here is another example to implement a a service to consume AWS SQS Queue as a SERVICE https://github.com/manjufy/moleculer-demo/tree/master/services
 
 ## How to run
 
